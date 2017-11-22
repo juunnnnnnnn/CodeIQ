@@ -8,8 +8,7 @@ class StandardOutput {
 		String line;
 		for(;cin.hasNext();){
 			line = cin.nextLine();
-			System.out.println(line.toUpperCase());
-			System.out.println(line);
+			System.out.println("output:  "+line);
 
 		}
 

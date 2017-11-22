@@ -1,4 +1,4 @@
-package combination;
+package straightLine;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,8 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-
-public class Combination {
+public class Main {
 	public static void main(String[]args){
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader(isr);
@@ -110,7 +109,7 @@ public class Combination {
         		finalAnswer++;
         		}
         	}
-    System.out.println("finalAnswer: "+finalAnswer);
+    System.out.println(finalAnswer);
     }
 	//linearEquation(ar.get(result2[0]).car, lattice, lattice, lattice, lattice, lattice) ;
 
@@ -165,15 +164,12 @@ public class Combination {
 	    public static class Tuple2<A, B> extends Pair<A, Tuple1<B>> {
 	        public Tuple2(A a, B b) {super(a, new Tuple1<>(b));}
 	    }
-
-
-
 	    public static class Tuple {
 	        public static <A> Tuple1<A> of(A a) {return new Tuple1<A>(a);}
 	        public static <A, B> Tuple2<A, B> of(A a, B b) {return new Tuple2<A, B>(a, b);}
 	    }
 
-	    //組み合わせ２
+	    //組み合わせの計算
 	    private enum Operation {add, remove};
 	    private static<T> Set<T> apply(Set<T> src, Operation operation, T item) {
 	        Set<T> result = new HashSet<T>(src);
@@ -183,7 +179,7 @@ public class Combination {
 	    }
 
 	    private static<T> Set<Set<T>> _combination(Set<T> selected, int depth, Set<T> pool) {
-	        if (depth == 0) return apply(new HashSet<>(), Operation.add, selected); // 選択済みのもののみ要素に持つ集合をかえす
+	        if (depth == 0) return apply(new HashSet<>(), Operation.add, selected);
 	        Set<Set<T>> result = new HashSet<Set<T>>();
 	        for (T item : pool) {
 	            result.addAll(
@@ -198,5 +194,5 @@ public class Combination {
 	    }
 	    public static<T> Set<Set<T>> combination2(Set<T> src, int k) {return _combination(new HashSet<T>(), k, src);}
 
-}
 
+}
